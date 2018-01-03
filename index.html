@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 
     <!-- my own special css-->
     <link rel="stylesheet" href="mystyle.css">
@@ -23,15 +24,11 @@
             <div class='jumbotron'>
                 <header1><strong> madrigal415</strong> weather app</header1>
             </div>
-            <div class="container">
-                <div class="row">
-                            <div id='dummy' class='col-md-4 col-md-offset-4 content'></div>
-                            <div id='temp_div'class='col-md-4 content'></div>
-
-                </div>
-             </div>    
-            <div id='out'></div>            
-            <div>
+            <div id='placeName'></div> 
+            <div id='dummy'></div>
+            <div id='temp_div'></div>
+                    
+            <div class='container'>
                     <!-- celsius button-->
                     <button id='cels' type="button" class="btn btn-primary">celsius</button>
     

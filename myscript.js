@@ -3,8 +3,10 @@
 // getting that secret key
 var mykey = config.MY_KEY;
 
-var x = document.getElementById("location");
-
+// add year
+var d = new Date();
+var n = d.getFullYear();
+document.getElementById('year').innerText = n;
 
 function getWeather(crds){
     console.log(crds);
@@ -30,6 +32,7 @@ document.getElementById('cels').addEventListener('click',function(e){
 
 
 document.getElementById('faren').addEventListener('click',function(e){
+    clearButtons();
     tempUnit='f';
     geoFindMe();
     document.getElementById('faren').classList.add('btn-primary');
@@ -38,7 +41,7 @@ document.getElementById('faren').addEventListener('click',function(e){
 
 function geoFindMe() {
     // finding spot to put the new info 
-    var output = document.getElementById("out");
+    var output = document.getElementById("placeName");
 
     // testing to see of browser geolocation is working
     if (!navigator.geolocation){
@@ -54,7 +57,7 @@ function geoFindMe() {
 
         console.log('THE URL LADIES AND GENTS ' + weatherURL);
 
-        output.innerHTML = '<p>Latitude is ' + latitude + '&deg; <br>Longitude is ' + longitude + '&deg;</p>';
+        
 
         getWeather(position);
 
@@ -65,8 +68,28 @@ function geoFindMe() {
         } else {
             console.log('temp units not found');
         };
-      
-        }
+        
+        // finding the city
+        var geocoder = new google.maps.Geocoder();
+                var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                console.log(position.coords.latitude + ', ' + position.coords.longitude);
+
+            geocoder.geocode({'latLng': geolocate}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var result;
+                    if (results.length > 1) {
+                        result = results[1];
+                    } else {
+                        result = results[0];
+                    }
+                    //console.log(result);
+                    
+                    console.log(result.address_components[2].long_name + ', ' + result.address_components[3].long_name);
+                    output.innerHTML = '<h3>' + result.address_components[2].long_name + '</h3>';
+                }
+            });
+    }
 
     // if location getting doesn't work    
     function error() {
@@ -77,7 +100,7 @@ function geoFindMe() {
 }
 
 // function switching kelvin to Celsius
-function k_to_c(temp){
+function k_to_c(temp) {
     var tempC = Math.round(300-temp,2);
     return tempC;
 };
@@ -153,8 +176,3 @@ function runAJAXC(apiCustom) {
 };
 
 geoFindMe();
-
-// add year
-var d = new Date();
-var n = d.getFullYear();
-document.getElementById('year').innerText = n;

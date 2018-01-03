@@ -17,25 +17,16 @@ a {
     color: purple;
 }
 
-#location {
-    border: solid yellow 2px;
-}
-
-.container {
-    padding: 20px;
-    color: pink;
-}
-
 
 #temp_div{
     font-family: 'Changa One', cursive;
-    font-size: 8em;
+    font-size: 5em;
 
 }
 .jumbotron {
 
-    height:auto;
-    padding: 10px 10px;
+    min-height: 10%;
+    padding: 10px 0 10px 0;
 }
 
 #contact_info {
@@ -43,8 +34,7 @@ a {
 }
 
 .content {
-    background-color:pink;
-    margin:10px;
-    border:black 10px double;
+    display: inline;
     vertical-align: middle;
+    
 }

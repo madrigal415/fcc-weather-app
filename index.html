@@ -3,38 +3,49 @@
 <head>
     <title>The Most Amazing Weather App Ever. By Daniel</title>
 
-    <!- getting that bootstrap css up in the mix ->
+    <!-- getting that bootstrap css up in the mix -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-    <!- bringing in bootstrap ->
+    <!-- bringing in bootstrap -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-    <!- my own special css->
+    <!-- my own special css-->
     <link rel="stylesheet" href="mystyle.css">
+
+    <!-- google font: changa1 -->
+    <link href="https://fonts.googleapis.com/css?family=Changa+One" rel="stylesheet">
 
 </head>
 
     <body>
-        <div class="container">
-        <div class='jumbotron'>
-            <h1> Daniel's Super Awesome Weather App</h1>
-        </div>
+            <div class='jumbotron'>
+                <header1><strong> madrigal415</strong> weather app</header1>
+            </div>
+            <div class="container">
+                <div class="row">
+                            <div id='dummy' class='col-md-4 col-md-offset-4 content'></div>
+                            <div id='temp_div'class='col-md-4 content'></div>
 
-       <div class="row justify-content-center">
-           <div class="col-4" id="location">
-               Long/Lat placeholder
-           </div>
-       <div class="col-4">
-           <p>The content of the document</p>One of two columns
-       </div>
-       </div>
-       <div class="container">
-           <button type="button" class="btn btn-primary" onclick="getLocation()">Get Location</button>
-       </div>
+                </div>
+             </div>    
+            <div id='out'></div>            
+            <div>
+                    <!-- celsius button-->
+                    <button id='cels' type="button" class="btn btn-primary">celsius</button>
+    
+                    <!-- farenheit button -->
+                    <button id='faren' type="button" class="btn btn-secondary" onclick="runAJAXF()">farenheit</button>
+            </div>
 
-    <script src="myscript.js"></script>
+            <div id='contact_info'>
+                <p>hecho por <strong><a href='www.madrigal415.com'>madrigal415</a></strong> en <span id='year'></span>.</p>
+            </div>
+
+    <script type='text/javascript' src='config.js'></script>
+    <script type='text/javascript' src='myscript.js'></script>
+    
     </body>
 
 </html>

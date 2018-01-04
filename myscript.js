@@ -2,6 +2,7 @@
 
 // getting that secret key
 var mykey = config.MY_KEY;
+var gKey = config.G_KEY;
 
 // add year
 var d = new Date();
@@ -53,12 +54,10 @@ function geoFindMe() {
     function success(position) {
         var latitude  = position.coords.latitude;
         var longitude = position.coords.longitude;
-        var weatherURL = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=' + mykey;
+        var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=' + mykey;
 
         console.log('THE URL LADIES AND GENTS ' + weatherURL);
-
         
-
         getWeather(position);
 
         if (tempUnit=== 'c'){
@@ -122,7 +121,7 @@ httpRequestF.onreadystatechange = function() {
             var obj = JSON.parse(data);
             console.log('temp: ' +obj.main.temp);
             console.log(obj["coord"]);
-            document.getElementById('dummy').innerHTML = "<img src='http://openweathermap.org/img/w/" + obj.weather[0].icon + ".png' alt='Icon depicting current weather.'>";
+            document.getElementById('dummy').innerHTML = "<img src='https://openweathermap.org/img/w/" + obj.weather[0].icon + ".png' alt='Icon depicting current weather.'>";
 
             var innerF = "<p>" + k_to_f(obj.main.temp) + " &deg;F<p>" // kelvin to farenheit
 
@@ -145,7 +144,7 @@ httpRequestC.onreadystatechange = function() {
             var obj = JSON.parse(data);
             console.log('temp: ' +obj.main.temp);
             console.log(obj["coord"]);
-            document.getElementById('dummy').innerHTML = "<img src='http://openweathermap.org/img/w/" + obj.weather[0].icon + ".png' alt='Icon depicting current weather.'>";
+            document.getElementById('dummy').innerHTML = "<img src='https://openweathermap.org/img/w/" + obj.weather[0].icon + ".png' alt='Icon depicting current weather.'>";
 
             var innerC = "<p>" + k_to_c(obj.main.temp) + " &deg;C<p>"; //kelvin to celsius 
 

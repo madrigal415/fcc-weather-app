@@ -9,11 +9,6 @@ var d = new Date();
 var n = d.getFullYear();
 document.getElementById('year').innerText = n;
 
-function getWeather(crds){
-    console.log(crds);
-    return crds;
-}
-
 var tempUnit= "c";
 
 function clearButtons(){
@@ -42,6 +37,7 @@ document.getElementById('faren').addEventListener('click',function(e){
 
 function geoFindMe() {
     // finding spot to put the new info 
+    console.log('testing 1 2 3');
     var output = document.getElementById("placeName");
 
     // testing to see of browser geolocation is working
@@ -57,8 +53,6 @@ function geoFindMe() {
         var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=' + mykey;
 
         console.log('THE URL LADIES AND GENTS ' + weatherURL);
-        
-        getWeather(position);
 
         if (tempUnit=== 'c'){
             runAJAXC(weatherURL);
@@ -68,26 +62,26 @@ function geoFindMe() {
             console.log('temp units not found');
         };
         
-        // finding the city
-        var geocoder = new google.maps.Geocoder();
-                var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        // var geocoder = new google.maps.Geocoder();
+        
+        // var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-                console.log(position.coords.latitude + ', ' + position.coords.longitude);
+        // console.log(position.coords.latitude + ', ' + position.coords.longitude);
 
-            geocoder.geocode({'latLng': geolocate}, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    var result;
-                    if (results.length > 1) {
-                        result = results[1];
-                    } else {
-                        result = results[0];
-                    }
-                    //console.log(result);
+        // geocoder.geocode({'latLng': geolocate}, function(results, status) {
+        //         if (status == google.maps.GeocoderStatus.OK) {
+        //             var result;
+        //             if (results.length > 1) {
+        //                 result = results[1];
+        //             } else {
+        //                 result = results[0];
+        //             }
+        //             //console.log(result);
                     
-                    console.log(result.address_components[2].long_name + ', ' + result.address_components[3].long_name);
-                    output.innerHTML = '<h3>' + result.address_components[2].long_name + '</h3>';
-                }
-            });
+        //             console.log(result.address_components[2].long_name + ', ' + result.address_components[3].long_name);
+        //             output.innerHTML = '<h3>' + result.address_components[2].long_name + '</h3>';
+        //         }
+        //     });
     }
 
     // if location getting doesn't work    
@@ -102,13 +96,13 @@ function geoFindMe() {
 function k_to_c(temp) {
     var tempC = Math.round(300-temp,2);
     return tempC;
-};
+}
 
 // switching kelvin to farenheight 
 function k_to_f(temp){
     var tempF = Math.round((temp -273.15) *9/5+32);
     return tempF;
-};
+}
 
 // setting up the XHR, feeding in a url 
 var httpRequestF = new XMLHttpRequest();
@@ -131,14 +125,13 @@ httpRequestF.onreadystatechange = function() {
         console.log("There was a problem");
     } 
     }
-    };
+}
 
 // setting up the XHR CELSIUS, feeding in a url 
 var httpRequestC = new XMLHttpRequest();
 httpRequestC.onreadystatechange = function() {
     if(httpRequestC.readyState === 4){
-        if(httpRequestC.status === 200){
-            
+        if(httpRequestC.status === 200){  
             var data = httpRequestC.responseText;
             console.log('XXX');
             var obj = JSON.parse(data);
@@ -152,26 +145,19 @@ httpRequestC.onreadystatechange = function() {
 
         } else {
         console.log("There was a problem");
-    } 
+        } 
     }
-    };
-
-
-
- // finding the city of the location
- 
- 
- // switching between 
+};
 
 // run the API open and send calls to Open Weather 
 function runAJAXF(apiCustom) {
     httpRequestF.open("GET", apiCustom, true);
     httpRequestF.send();
-};
+}
 
 function runAJAXC(apiCustom) {
     httpRequestC.open("GET", apiCustom, true);
     httpRequestC.send();
-};
+}
 
 geoFindMe();

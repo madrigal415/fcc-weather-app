@@ -160,4 +160,4 @@ function runAJAXC(apiCustom) {
     httpRequestC.send();
 }
 
-document.addEventListener('load',geoFindMe());
+document.getElementById('trigger').addEventListener('click', geoFindMe());

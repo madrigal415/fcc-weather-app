@@ -37,7 +37,6 @@ document.getElementById('faren').addEventListener('click',function(e){
 
 function geoFindMe() {
     // finding spot to put the new info 
-    console.log('testing 1 2 3');
     var output = document.getElementById("placeName");
 
     // testing to see of browser geolocation is working
@@ -133,7 +132,6 @@ httpRequestC.onreadystatechange = function() {
     if(httpRequestC.readyState === 4){
         if(httpRequestC.status === 200){  
             var data = httpRequestC.responseText;
-            console.log('XXX');
             var obj = JSON.parse(data);
             console.log('temp: ' +obj.main.temp);
             console.log(obj["coord"]);
@@ -160,4 +158,12 @@ function runAJAXC(apiCustom) {
     httpRequestC.send();
 }
 
-document.getElementById('trigger').addEventListener('click', geoFindMe());
+var trigger = document.getElementById('trigger');
+
+trigger.addEventListener('click', function(){
+    geoFindMe();
+    this.classList.add('invisible');
+    document.getElementById('tempButtons').classList.remove('invisible');
+});
+
+
